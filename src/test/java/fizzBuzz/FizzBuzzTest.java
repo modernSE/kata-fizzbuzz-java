@@ -14,17 +14,31 @@ public class FizzBuzzTest {
 	}
 	
 	@Test
-	public void Buzz() {
-		FizzBuzz buzzer = new FizzBuzz();
-		String result = buzzer.translate(14);
-		assertEquals("Buzz", result);
+	public void Bar() {
+		FizzBuzz fizzer = new FizzBuzz();
+		String result = fizzer.translate(3);
+		assertEquals("Bar", result);
 	}
 	
 	@Test
-	public void FizzBuzz() {
+	public void FooFizzBarBuzz() {
 		FizzBuzz fizzbuzzer = new FizzBuzz();
 		String result = fizzbuzzer.translate(35);
-		assertEquals("FizzBuzz", result);
+		assertEquals("FooFizzBarBuzz", result);
+	}
+	
+	@Test
+	public void Foo() {
+		FizzBuzz fizzbuzzer = new FizzBuzz();
+		String result = fizzbuzzer.translate(6);
+		assertEquals("Foo", result);
+	}
+	
+	@Test
+	public void FooBuzz() {
+		FizzBuzz fizzbuzzer = new FizzBuzz();
+		String result = fizzbuzzer.translate(7);
+		assertEquals("FooBuzz", result);
 	}
 	
 	@Test
