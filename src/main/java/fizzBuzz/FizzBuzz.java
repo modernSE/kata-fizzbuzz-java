@@ -1,18 +1,27 @@
-//This example is based on _Java Examples in a Nutshell_. (http://www.oreilly.com)
-//Copyright (c) 1997 by David Flanagan
-
 package fizzBuzz;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FizzBuzz {
 
+	private NumberTranslator fizzBuzzTranslator;
+	
+	public FizzBuzz() {
+		List<ConditionTranslation> translations = new ArrayList<ConditionTranslation>();
+		translations.add(new ConditionTranslation(i -> i % 6 == 0 || i % 7 == 0, "Foo"));
+		translations.add(new ConditionTranslation(i -> i % 5 == 0, "Fizz"));
+		translations.add(new ConditionTranslation(this::contains3, "Bar"));
+		translations.add(new ConditionTranslation(i -> i % 7 == 0, "Buzz"));
+		
+		this.fizzBuzzTranslator = new NumberTranslator(translations);
+	}
+	
+	private boolean contains3(int i) {
+		return String.valueOf(i).contains("3");
+	}
+	
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		return fizzBuzzTranslator.translate(number);
 	}
 }
