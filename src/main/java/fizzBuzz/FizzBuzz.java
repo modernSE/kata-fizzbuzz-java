@@ -3,16 +3,36 @@
 
 package fizzBuzz;
 
-public class FizzBuzz {
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Verletzte Prinzipien:
+ * - Open-Closed: Beschränkung auf genau zwei fest Zahlen 5 + 7 und Erweiterungen bedingen neue else/ifs
+ * 
+ * @author modernSE
+ *
+ * -> Open / Closed ist gut gelöst
+ * -> SR auch, aber Reihenfolge der Translators könnte noch gekapselt werden
+ */
+public class FizzBuzz {
+	
+	private List<Translator> translators = new ArrayList<>();
+	
+	public FizzBuzz(List<Translator> translators) {
+		this.translators.addAll(translators);
+	}
+	
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		StringBuilder stringBuilder = new StringBuilder();
+		for (final Translator translator : translators) {
+			stringBuilder.append(translator.translate(number));
+		}
+		
+		String result = stringBuilder.toString();
+		if (result.isEmpty()) {
+			return String.valueOf(number);
+		}
+		return result;
 	}
 }
