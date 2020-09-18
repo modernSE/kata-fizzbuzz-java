@@ -3,16 +3,24 @@
 
 package fizzbuzz;
 
+import java.util.List;
+
 public class FizzBuzz {
 
+    private List<FizzBuzzRule> rules = List.of(new FooRule(), //
+            new FizzRule(), //
+            new BuzzRule());
+
+    private FizzBuzzRule defaultRule = new DefaultRule();    
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+        StringBuilder builder = new StringBuilder();
+        for (FizzBuzzRule rule : rules) {
+            builder.append(rule.getStringValue(number));
+        }
+        if (builder.length() == 0) {
+            builder.append(defaultRule.getStringValue(number));
+        }
+        return builder.toString();
 	}
 }
