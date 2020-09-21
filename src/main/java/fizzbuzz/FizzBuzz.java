@@ -3,6 +3,15 @@
 
 package fizzbuzz;
 
+import java.util.List;
+import java.util.function.Predicate;
+
+public class StringTranslator {
+    public String translate(List<Function<Integer, String>> functions) {
+        return functions.
+    }
+}
+
 public class FizzBuzz {
 
 	public String translate(int number) {
