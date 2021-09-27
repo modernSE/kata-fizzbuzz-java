@@ -2,7 +2,7 @@
 //Copyright (c) 1997 by David Flanagan
 
 package fizzbuzz;
-
+dfgdfv
 public class FizzBuzz {
 
 	public String translate(int number) {
