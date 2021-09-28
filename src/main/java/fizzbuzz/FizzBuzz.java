@@ -15,10 +15,12 @@ public class FizzBuzz {
 		String result = "";
 		boolean needsDefault = true;
 
+		var fooValidator = new FooValidator();
 		var fizzValidator = new FizzValidator();
+		var barValidator = new BarValidator();
 		var buzzValidator = new BuzzValidator();
 		
-		List<Validator> validators = Arrays.asList(fizzValidator,buzzValidator );		
+		List<Validator> validators = Arrays.asList(fooValidator,fizzValidator,barValidator,buzzValidator );		
 
 		for (Validator validator : validators) {
 			if (validator.validate(number)){
@@ -60,8 +62,32 @@ public class FizzBuzz {
 		public String getTranslation() {			
 			return "Buzz";
 		}
+	}
 
+	public class FooValidator implements Validator{
 
+		@Override
+		public boolean validate(int number) {			
+			return ((number % 6) == 0 || (number % 7) == 0 );
+		}
+
+		@Override
+		public String getTranslation() {			
+			return "Foo";
+		}
+	}
+
+	public class BarValidator implements Validator{
+
+		@Override
+		public boolean validate(int number) {		
+			return String.valueOf(number).contains("3");			
+		}
+
+		@Override
+		public String getTranslation() {			
+			return "Bar";
+		}
 	}
 
 }
