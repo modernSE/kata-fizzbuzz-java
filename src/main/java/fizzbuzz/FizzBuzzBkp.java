@@ -3,7 +3,7 @@
 
 package fizzbuzz;
 
-public class FizzBuzz {
+public class FizzBuzzBkp {
 
 	public String translate(int number) {
 		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
