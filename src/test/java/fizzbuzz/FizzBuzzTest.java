@@ -2,9 +2,19 @@ package fizzbuzz;
 
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class FizzBuzzTest {
+
+
+	private FizzBuzz fizzer;
+	
+@BeforeClass 
+public void init(){
+	fizzer = new FizzBuzz();
+	fizzer.init();
+}
 
 	@Test
 	public void Fizz() {
@@ -30,6 +40,7 @@ public class FizzBuzzTest {
 	@Test
 	public void RandomNumber() {
 		FizzBuzz rand = new FizzBuzz();
+		rand.init
 		String result = rand.translate(4);
 		assertEquals("4", result);
 	}

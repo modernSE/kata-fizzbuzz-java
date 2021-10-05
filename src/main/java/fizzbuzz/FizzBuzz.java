@@ -3,16 +3,30 @@
 
 package fizzbuzz;
 
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+
 public class FizzBuzz {
 
+	private final Set<Translator> translators = new HashSet<>();
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+
+		for(Translator translator : translators){
+			if(translator.shouldTranslate(number)){
+				return translator.translate();
+			}
+		}
+		return String.valueOf(number);
+	}
+
+	public void init() {
+		List<Checker> checkers = List.of(new SimpleModuloChecker(5), new SimpleModuloChecker(7));
+		translators.add(new Translator("FizzBuzz", checkers));
+		Checker checker = new SimpleModuloChecker(5);
+		translators.add(new Translator("Fizz", List.of(checker)));
+		checker = new SimpleModuloChecker(7);
+		translators.add(new Translator("Buzz",List.of(checker)));
 	}
 }
