@@ -4,15 +4,29 @@
 package fizzbuzz;
 
 public class FizzBuzz {
+	
+	private Devider devider;
+
+	public FizzBuzz(Devider devider) {
+		this.devider = devider;
+	}
 
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
+		if (isCompleteMatch(number)) // A multiple of both?
 			return "FizzBuzz";
-		else if ((number % 5) == 0)
+		else if (isSingleMatch(number, devider.getFirstDevider()))
 			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
+		else if (isSingleMatch(number, devider.getSecondDevider()))
 			return "Buzz"; // else a multiple of 7?
 		else
 			return String.valueOf(number); // else just print it
+	}
+
+	private boolean isCompleteMatch(int number) {
+		return ((number % devider.getFirstDevider()) == 0) && ((number % devider.getSecondDevider()) == 0);
+	}
+
+	private boolean isSingleMatch(int number, int devider) {
+		return number % devider == 0;
 	}
 }
