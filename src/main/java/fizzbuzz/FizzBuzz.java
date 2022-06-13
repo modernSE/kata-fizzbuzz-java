@@ -13,6 +13,6 @@ public class FizzBuzz {
 		else if ((number % 7) == 0)
 			return "Buzz"; // else a multiple of 7?
 		else
-			return String.valueOf(number); // else just print it
+			return String.valueOf(number); // else just print it // this is my solution
 	}
 }
