@@ -3,16 +3,29 @@
 
 package fizzbuzz;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FizzBuzz {
 
+	List<NumberHandler> handlers = new ArrayList<>();
+	
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
+		
+
+		if (isDivisibleBy(number, 5) && isDivisibleBy(number, 7)) // A multiple of both?
 			return "FizzBuzz";
-		else if ((number % 5) == 0)
+		else if (isDivisibleBy(number, 5))
 			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
+		else if (isDivisibleBy(number, 7))
 			return "Buzz"; // else a multiple of 7?
 		else
 			return String.valueOf(number); // else just print it
 	}
+
+	private boolean isDivisibleBy(int number, int divisor) {
+		return (number % divisor) == 0;
+	}
+
 }
