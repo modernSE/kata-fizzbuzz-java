@@ -5,14 +5,24 @@ package fizzbuzz;
 
 public class FizzBuzz {
 
+	private final FizzChecker fizzChecker;
+	private final BuzzChecker buzzChecker;
+
+	public FizzBuzz(FizzChecker fizzChecker, BuzzChecker buzzChecker) {
+		this.fizzChecker = fizzChecker;
+		this.buzzChecker = buzzChecker;
+	}
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+
+		String res = "";
+
+		res += fizzChecker.check(number);
+		res += buzzChecker.check(number);
+
+		if(res.equals(""))
+			res = String.valueOf(number);
+
+		return res;
 	}
 }
