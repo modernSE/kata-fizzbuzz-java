@@ -9,7 +9,7 @@ public class FizzBuzzTest {
 	@Test
 	public void Foo() {
 		FizzBuzz fizzer = new FizzBuzz();
-		String result = fizzer.translate(14);
+		String result = fizzer.translate(42);
 		assertEquals("Foo", result);
 	}
 
@@ -30,7 +30,7 @@ public class FizzBuzzTest {
 	@Test
 	public void Buzz() {
 		FizzBuzz buzzer = new FizzBuzz();
-		String result = buzzer.translate(21);
+		String result = buzzer.translate(14);
 		assertEquals("Buzz", result);
 	}
 	

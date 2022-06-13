@@ -8,8 +8,8 @@ import java.util.List;
 public class FizzBuzz {
 
 	List<HitCondition> conditions = List.of(
-		new FizzBuzzHitCondition(),
 		new FooHitCondition(),
+		new FizzBuzzHitCondition(),
 		new FizzHitCondition(),
 		new BarHitCondition(),
 		new BuzzHitCondition()
