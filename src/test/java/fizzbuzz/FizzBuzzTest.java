@@ -7,16 +7,30 @@ import org.junit.Test;
 public class FizzBuzzTest {
 
 	@Test
+	public void Foo() {
+		FizzBuzz fizzer = new FizzBuzz();
+		String result = fizzer.translate(14);
+		assertEquals("Foo", result);
+	}
+
+	@Test
 	public void Fizz() {
 		FizzBuzz fizzer = new FizzBuzz();
 		String result = fizzer.translate(15);
 		assertEquals("Fizz", result);
 	}
+
+	@Test
+	public void Bar() {
+		FizzBuzz fizzer = new FizzBuzz();
+		String result = fizzer.translate(13);
+		assertEquals("Bar", result);
+	}
 	
 	@Test
 	public void Buzz() {
 		FizzBuzz buzzer = new FizzBuzz();
-		String result = buzzer.translate(14);
+		String result = buzzer.translate(21);
 		assertEquals("Buzz", result);
 	}
 	
