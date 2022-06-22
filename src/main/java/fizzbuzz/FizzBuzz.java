@@ -3,16 +3,25 @@
 
 package fizzbuzz;
 
+import java.util.List;
+
 public class FizzBuzz {
 
+	List<HitCondition> conditions = List.of(
+		new FooHitCondition(),
+		new FizzBuzzHitCondition(),
+		new FizzHitCondition(),
+		new BarHitCondition(),
+		new BuzzHitCondition()
+	);
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		for (HitCondition condition : conditions) {
+			if (condition.isHit(number)) {
+				return condition.getHitWord();
+			}
+		}
+
+		return String.valueOf(number);
 	}
 }
