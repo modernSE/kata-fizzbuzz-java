@@ -3,16 +3,24 @@
 
 package fizzbuzz;
 
+import java.util.List;
+
 public class FizzBuzz {
 
+	private List<Condition> conditions;
+
+	public FizzBuzz(List<Condition> conditions) {
+		this.conditions = conditions;
+	}
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		String translated = "";
+		for (Condition condition : conditions) {
+			translated += condition.translate(number);
+		}
+		if (translated.isBlank()) {
+			translated = String.valueOf(number);
+		}
+		return translated;
 	}
 }
