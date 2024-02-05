@@ -3,16 +3,21 @@
 
 package fizzbuzz;
 
+import java.util.List;
+
 public class FizzBuzz {
 
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		ModuloBuzzer sixBuzzer = new ModuloBuzzer("Foo", 6);
+		ModuloBuzzer sevenBuzzerFoo = new ModuloBuzzer("Foo",7);
+		ModuloBuzzer fiveBuzzer = new ModuloBuzzer("Fizz", 5);
+		ContainsBuzzer threeBuzzer = new ContainsBuzzer("Bar", 3);
+		ModuloBuzzer sevenBuzzer = new ModuloBuzzer("Buzz", 7);
+		List<Buzzer> buzzers = List.of( sixBuzzer, sevenBuzzerFoo,fiveBuzzer, threeBuzzer, sevenBuzzer);
+		String translation = "";
+		for (Buzzer buzzer: buzzers){
+			translation += buzzer.translate(number);
+		}
+		return translation.isBlank() ? String.valueOf(number) : translation;
 	}
 }
