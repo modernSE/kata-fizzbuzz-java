@@ -24,7 +24,7 @@ public class FizzBuzzTest {
 	public void FizzBuzz() {
 		FizzBuzz fizzbuzzer = new FizzBuzz();
 		String result = fizzbuzzer.translate(35);
-		assertEquals("FizzFooBarBuzz", result);
+		assertEquals("FooFizzBarBuzz", result);
 	}
 	
 	@Test
