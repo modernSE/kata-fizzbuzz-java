@@ -3,16 +3,30 @@
 
 package fizzbuzz;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FizzBuzz {
 
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		String result = "";
+		List<Divider> checkers = registerChecker();
+		for (Divider checker: checkers) {
+			if (checker.isResponsible(number)) {
+				result += checker.getName();
+			}
+		}
+		if (result.equals("")) {
+			result = String.valueOf(number);
+		}
+		return result;
+	}
+
+
+	private List<Divider> registerChecker() {
+		List<Divider> registeredCheckers = new ArrayList<>();
+		registeredCheckers.add(new Fizz());
+		registeredCheckers.add(new Buzz());
+		return registeredCheckers;
 	}
 }
