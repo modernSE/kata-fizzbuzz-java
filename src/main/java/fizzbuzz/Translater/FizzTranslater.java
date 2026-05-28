@@ -1,6 +1,6 @@
 package fizzbuzz.Translater;
 
-public class FizzTranslater implements Translater {
+public class FizzTranslater implements Translater, TranslationChecker {
 
     @Override
     public boolean shouldTranslate(int number) {
