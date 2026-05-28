@@ -3,16 +3,27 @@
 
 package fizzbuzz;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class FizzBuzz {
 
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		Translator fizzTranslator = new FizzBuzzTranslator(5, "Fizz");
+		Translator buzzTranslator = new FizzBuzzTranslator(7, "Buzz");
+		Translator fooTranslator = new FooTranslator(List.of(6,7), "Foo");
+		List<Translator> translators = List.of(fooTranslator, fizzTranslator, buzzTranslator);
+
+		String translation = "";
+		for(Translator translator: translators){
+			translation += translator.translate(number);
+		}
+
+		if(translation.isBlank()){
+			translation = String.valueOf(number);
+		}
+		return translation;
 	}
 }
