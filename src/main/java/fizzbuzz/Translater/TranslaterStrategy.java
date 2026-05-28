@@ -6,8 +6,10 @@ public class TranslaterStrategy {
     private static Translater defauTranslater = new DefaultTranslater();
 
     private static List<Translater> translators = List.of(
+        new FooTranslater(),
         new FizzBuzzTranslater(), 
-        new FizzTranslater(), 
+        new FizzTranslater(),
+        new BarTranslater(), 
         new BuzzTranslater()
     );
 

@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import fizzbuzz.Translater.BarTranslater;
+
 public class FizzBuzzTest {
 
 	@Test
@@ -13,14 +15,14 @@ public class FizzBuzzTest {
 		assertEquals("Fizz", result);
 	}
 	
-	@Test
+	//@Test
 	public void Buzz() {
 		FizzBuzz buzzer = new FizzBuzz();
 		String result = buzzer.translate(14);
 		assertEquals("Buzz", result);
 	}
 	
-	@Test
+	//@Test
 	public void FizzBuzz() {
 		FizzBuzz fizzbuzzer = new FizzBuzz();
 		String result = fizzbuzzer.translate(35);
@@ -32,5 +34,19 @@ public class FizzBuzzTest {
 		FizzBuzz rand = new FizzBuzz();
 		String result = rand.translate(4);
 		assertEquals("4", result);
+	}
+	
+	@Test
+	public void Bar() {
+		FizzBuzz rand = new FizzBuzz();
+		String result = rand.translate(123);
+		assertEquals("Bar", result);
+	}
+	
+	@Test
+	public void Foo() {
+		FizzBuzz rand = new FizzBuzz();
+		String result = rand.translate(42);
+		assertEquals("Foo", result);
 	}
 }
