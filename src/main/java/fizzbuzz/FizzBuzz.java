@@ -3,16 +3,33 @@
 
 package fizzbuzz;
 
+import java.util.List;
+
 public class FizzBuzz {
 
+	List<ConditionWord> conditions;
+
+	public FizzBuzz() {
+		this.conditions = List.of(
+			new ConditionWord(new OrCondition(List.of(
+				new ModuloCondition(6),
+				new ModuloCondition(7)
+			)), "Foo"),
+			new ConditionWord(new ModuloCondition(5), "Fizz"),
+			new ConditionWord(new ContainsCondition(3), "Bar"),
+			new ConditionWord(new ModuloCondition(7), "Buzz")			
+		);
+	}
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		String result = "";
+		for (ConditionWord conditionWord : conditions) {
+			result += conditionWord.evaluate(number);
+		}
+
+		if (result.isEmpty()) {
+			return String.valueOf(number);
+		}
+		return result;
 	}
 }
