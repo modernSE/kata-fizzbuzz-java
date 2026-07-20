@@ -3,16 +3,20 @@
 
 package fizzbuzz;
 
+import java.util.Optional;
+
 public class FizzBuzz {
 
+	private final IInputOutput[] resolvers = new IInputOutput[] { new InputOutputFizzBuzz(), new InputOutputBuzz(), new InputOutputFizz() };
+
 	public String translate(int number) {
-		if (((number % 5) == 0) && ((number % 7) == 0)) // A multiple of both?
-			return "FizzBuzz";
-		else if ((number % 5) == 0)
-			return "Fizz"; // else a multiple of 5?
-		else if ((number % 7) == 0)
-			return "Buzz"; // else a multiple of 7?
-		else
-			return String.valueOf(number); // else just print it
+		for (IInputOutput resolver : resolvers) {
+			Optional<String> value = resolver.resolve(number);
+			if (value.isPresent()) {
+				return value.get();
+			}
+		}
+
+		return String.valueOf(number); // else just print it
 	}
 }
