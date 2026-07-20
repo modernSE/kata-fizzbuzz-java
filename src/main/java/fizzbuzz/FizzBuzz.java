@@ -7,16 +7,19 @@ import java.util.Optional;
 
 public class FizzBuzz {
 
-	private final IInputOutput[] resolvers = new IInputOutput[] { new InputOutputFizzBuzz(), new InputOutputBuzz(), new InputOutputFizz() };
+	private final IInputOutput[] resolvers = new IInputOutput[] { new InputOutputFoo(), new InputOutputFizz(),
+			new InputOutputBar(), new InputOutputBuzz() };
 
 	public String translate(int number) {
+		StringBuilder output = new StringBuilder();
+
 		for (IInputOutput resolver : resolvers) {
 			Optional<String> value = resolver.resolve(number);
 			if (value.isPresent()) {
-				return value.get();
+				output.append(value.get());
 			}
 		}
 
-		return String.valueOf(number); // else just print it
+		return output.length() > 0 ? output.toString() : String.valueOf(number);
 	}
 }
